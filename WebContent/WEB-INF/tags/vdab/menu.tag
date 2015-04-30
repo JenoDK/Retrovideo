@@ -3,7 +3,9 @@
 <header>
 	<nav>
 		<ul>
-			<li><a href="<c:url value='/'/>">Welkom</a></li>
+			<li><a href="<c:url value='/index.htm'/>">Reserveren</a></li>
+			<li><a href="<c:url value='/mandje.htm'/>">Mandje</a></li>
+			<li><a href="<c:url value='/klant.htm'/>">Klant</a></li>
 		</ul>
 	</nav>
 </header>
