@@ -6,15 +6,15 @@ public class Klant implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private long id;
-	private String familieNaam;
-	private String voorNaam;
+	private String familienaam;
+	private String voornaam;
 	private Adres adres;
 	
 	public Klant(long id, String familieNaam, String voorNaam, Adres adres) {
 		super();
 		this.id = id;
-		this.familieNaam = familieNaam;
-		this.voorNaam = voorNaam;
+		this.familienaam = familieNaam;
+		this.voornaam = voorNaam;
 		this.adres = adres;
 	}
 
@@ -22,12 +22,12 @@ public class Klant implements Serializable{
 		return id;
 	}
 
-	public String getFamilieNaam() {
-		return familieNaam;
+	public String getFamilienaam() {
+		return familienaam;
 	}
 
-	public String getVoorNaam() {
-		return voorNaam;
+	public String getVoornaam() {
+		return voornaam;
 	}
 
 	public Adres getAdres() {
@@ -36,6 +36,10 @@ public class Klant implements Serializable{
 
 	public void setAdres(Adres adres) {
 		this.adres = adres;
+	}
+	
+	public String getNaam(){
+		return voornaam + " " + familienaam;
 	}
 	
 	

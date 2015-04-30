@@ -18,9 +18,6 @@ import javax.sql.DataSource;
 import be.vdab.dao.FilmDAO;
 import be.vdab.entities.Film;
 
-/**
- * Servlet implementation class MandjeServlet
- */
 @WebServlet("/mandje.htm")
 public class MandjeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -71,15 +68,17 @@ public class MandjeServlet extends HttpServlet {
 			}
 		}
 		if (request.getParameter("verwijderknop") != null) {
-			HttpSession session = request.getSession();
-			@SuppressWarnings("unchecked")
-			Set<Long> filmIdsInMandje = (Set<Long>) session
-					.getAttribute("mandje");
-			for (String nummerAlsString : request.getParameterValues("id")) {
-				long id = Long.parseLong(nummerAlsString);
-				filmIdsInMandje.remove(id);
+			if (request.getParameterValues("id") != null) {
+				HttpSession session = request.getSession();
+				@SuppressWarnings("unchecked")
+				Set<Long> filmIdsInMandje = (Set<Long>) session
+						.getAttribute("mandje");
+				for (String nummerAlsString : request.getParameterValues("id")) {
+					long id = Long.parseLong(nummerAlsString);
+					filmIdsInMandje.remove(id);
+				}
+				session.setAttribute("mandje", filmIdsInMandje);
 			}
-			session.setAttribute("mandje", filmIdsInMandje);
 		}
 		response.sendRedirect(response.encodeRedirectURL(request
 				.getRequestURI()));
