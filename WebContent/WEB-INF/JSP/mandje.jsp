@@ -7,17 +7,10 @@
 <c:import url="/WEB-INF/JSP/head.jsp">
 	<c:param name='title' value='Mandje' />
 </c:import>
+<link rel='stylesheet' href='<c:url value="/css/reservaties.css"/>'>
 </head>
 <body>
-	<header>
-		<nav>
-			<ul>
-				<li><a href="<c:url value='/index.htm'/>">Reserveren</a></li>
-				<li><a href="<c:url value='/klant.htm'/>">Klant</a></li>
-			</ul>
-		</nav>
-	</header>
-	<%-- 	<vdab:menu /> --%>
+	<vdab:menu />
 	<h1>Mandje</h1>
 	<c:if test='${not empty filmsInMandje }'>
 		<form name='form' action="<c:url value='/mandje.htm'/>" method='post'
@@ -28,7 +21,7 @@
 					<th>Prijs</th>
 					<th><input type='submit' value='Verwijderen'
 						name='verwijderknop'></th>
-				</tr>
+			</tr>
 				<c:forEach var='film' items='${filmsInMandje}'>
 					<tr>
 						<td>${film.titel}</td>
@@ -38,9 +31,11 @@
 						</label></td>
 					</tr>
 				</c:forEach>
-			</table>
+		</table>
 		</form>
 	</c:if>
-	<c:if test='${not empty fout}'>${fout}</c:if>
+	<c:if test='${not empty fout}'>
+		<h2>${fout}</h2>
+	</c:if>
 </body>
 </html>

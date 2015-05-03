@@ -10,14 +10,7 @@
 <link rel='stylesheet' href='<c:url value="/css/reservaties.css"/>'>
 </head>
 <body>
-	<header>
-		<nav>
-			<ul>
-				<li><a href="<c:url value='/index.htm'/>">Reserveren</a></li>
-			</ul>
-		</nav>
-	</header>
-	<%-- 	<vdab:menu /> --%>
+	<vdab:menu />
 	<c:if test='${not empty film }'>
 		<h1>${film.titel}</h1>
 		<img src='<c:url value="/images/${film.id}.jpg"/>' alt='${film.titel}'>
@@ -31,12 +24,14 @@
 			<dt>Beschikbaar</dt>
 			<dd>${film.voorraad - film.gereserveerd}</dd>
 		</dl>
-		<c:if test='${(film.voorraad - film.gereserveerd)>0}'>
+		<c:if test='${((film.voorraad - film.gereserveerd)>0) and empty fout}'>
 			<form name='form' action="<c:url value='/mandje.htm'/>" method='post'
-				id='toevoegform'>
-				<input type="hidden" name='id' value="${film.id}" /> <input
-					type='submit' name='toevoegknop' value='Toevoegen aan mandje' />
-			</form>
+				id='toevoegform'><input type="hidden" name='id'
+				value="${film.id}" /> <input type='submit' name='toevoegknop'
+				value='Toevoegen aan mandje' /></form>
+		</c:if>
+		<c:if test='${not empty fout}'>
+			<h2>${fout}</h2>
 		</c:if>
 	</c:if>
 	<script>

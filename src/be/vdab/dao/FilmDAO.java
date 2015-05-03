@@ -14,6 +14,7 @@ import be.vdab.entities.Film;
 public class FilmDAO extends AbstractDAO {
 	private static final String FIND_BY_ID_SQL = "SELECT * FROM retrovideo.films WHERE id = ?;";
 	private static final String FIND_ALL_BY_GENRE_SQL = "SELECT * FROM retrovideo.films WHERE genreid = ?;";
+	private static final String UPDATE_RECORD_SQL = "UPDATE retrovideo.films SET gereserveerd = gereserveerd + ? WHERE id = ?;";
 	private final static Logger logger = Logger.getLogger(GenreDAO.class
 			.getName());
 
@@ -46,6 +47,19 @@ public class FilmDAO extends AbstractDAO {
 				}
 				return null;
 			}
+		} catch (SQLException ex) {
+			logger.log(Level.SEVERE, "Probleem met database retrovideo", ex);
+			throw new DAOException(ex);
+		}
+	}
+	
+	public void changeGereserveerd(String plusOrMinus, long id){
+		try (Connection connection = dataSource.getConnection();
+				PreparedStatement statement = connection
+						.prepareStatement(UPDATE_RECORD_SQL)) {
+			statement.setString(1, plusOrMinus);
+			statement.setLong(2, id);
+			statement.executeUpdate();
 		} catch (SQLException ex) {
 			logger.log(Level.SEVERE, "Probleem met database retrovideo", ex);
 			throw new DAOException(ex);

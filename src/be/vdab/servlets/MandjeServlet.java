@@ -32,6 +32,11 @@ public class MandjeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
+		if (request.getCookies() == null) {
+			request.setAttribute("fout", "Dit werkt enkel als cookies aanstaan");
+			request.getRequestDispatcher(VIEW).forward(request, response);
+			return;
+		}
 		if (session != null) {
 			@SuppressWarnings("unchecked")
 			Set<Long> mandje = (Set<Long>) session.getAttribute("mandje");
@@ -49,12 +54,7 @@ public class MandjeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		if (request.getParameter("toevoegknop") != null) {
-			if (request.getCookies() == null) {
-				request.setAttribute("fout",
-						"Dit werkt enkel als cookies aanstaan");
-				request.getRequestDispatcher(VIEW).forward(request, response);
-				return;
-			}
+
 			if (request.getParameter("id") != null) {
 				HttpSession session = request.getSession();
 				@SuppressWarnings("unchecked")

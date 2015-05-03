@@ -10,7 +10,8 @@
 <link rel='stylesheet' href='<c:url value="/css/reservaties.css"/>'>
 </head>
 <body>
-	<h1>Reservaties</h1>
+	<vdab:menu />
+	<h1>Films</h1>
 	<ul>
 		<c:forEach var='genre' items='${genres}'>
 			<c:choose>

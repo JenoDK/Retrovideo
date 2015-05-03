@@ -5,22 +5,22 @@
 <html lang='nl'>
 <head>
 <c:import url="/WEB-INF/JSP/head.jsp">
-	<c:param name='title' value='${film.titel}' />
+	<c:param name='title' value='Bevestigen' />
 </c:import>
 <link rel='stylesheet' href='<c:url value="/css/reservaties.css"/>'>
 </head>
 <body>
-	<header>
-		<nav>
-			<ul>
-				<li><a href="<c:url value='/index.htm'/>">Reserveren</a></li>
-				<li><a href="<c:url value='/mandje.htm'/>">Mandje</a></li>
-				<li><a href="<c:url value='/klant.htm'/>">Klant</a></li>
-			</ul>
-		</nav>
-	</header>
+	<vdab:menu />
 	<h1>Bevestigen</h1>
-	
-	${aantalFilms} film(s) voor ${klantnaam}
+
+	<c:forEach var='film' items='${filmsInMandje}'>
+
+		<h3>- ${film.titel}</h3>
+
+	</c:forEach> ${aantalFilmsInMandje} film(s) voor ${klantnaam}
+
+	<form name='form' action="<c:url value='/bevestigen.htm'/>"
+	method='post' id='bevestigform'><input type="hidden" name='id' value="${klantid}" /><input type='submit'
+		value='Bevestigen' name='bevestigknop'></form>
 </body>
 </html>

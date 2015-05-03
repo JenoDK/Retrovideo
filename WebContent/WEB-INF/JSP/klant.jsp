@@ -10,14 +10,7 @@
 <link rel='stylesheet' href='<c:url value="/css/reservaties.css"/>'>
 </head>
 <body>
-	<header>
-		<nav>
-			<ul>
-				<li><a href="<c:url value='/index.htm'/>">Reserveren</a></li>
-				<li><a href="<c:url value='/mandje.htm'/>">Mandje</a></li>
-			</ul>
-		</nav>
-	</header>
+	<vdab:menu />
 	<h1>Klant</h1>
 	<form method='get'>
 		<label> Familienaam bevat: <input name='familienaam'
