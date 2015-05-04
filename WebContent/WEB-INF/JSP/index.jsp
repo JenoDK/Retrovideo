@@ -7,32 +7,30 @@
 <c:import url="/WEB-INF/JSP/head.jsp">
 	<c:param name='title' value='Reservaties' />
 </c:import>
-<link rel='stylesheet' href='<c:url value="/css/reservaties.css"/>'>
 </head>
 <body>
-	<vdab:menu />
-	<h1>Films</h1>
-	<ul>
-		<c:forEach var='genre' items='${genres}'>
-			<c:choose>
-				<c:when test='${genre.id == activeGenre}'>
-					<li><c:out value='${genre.naam}' /></li>
-				</c:when>
-				<c:otherwise>
-					<li><c:url value='/index.htm' var='detailURL'>
-							<c:param name='genreid' value='${genre.id}' />
-						</c:url> <a href='${detailURL}'><c:out value='${genre.naam}' /></a></li>
-				</c:otherwise>
-			</c:choose>
-		</c:forEach>
-	</ul>
-	<c:if test='${not empty films}'>
-		<c:forEach var='film' items='${films}'>
-			<c:url value='/detailFilm.htm' var='detailURL'>
-				<c:param name='id' value='${film.id}' />
-			</c:url>
-			<a href='${detailURL}'
+<vdab:menu />
+	<div class='wrapper'>
+		<ul id='genre'>
+			<c:forEach var='genre' items='${genres}'>
 				<c:choose>
+					<c:when test='${genre.id == activeGenre}'>
+						<li><c:out value='${genre.naam}' /></li>
+					</c:when>
+					<c:otherwise>
+						<li><c:url value='/index.htm' var='detailURL'>
+								<c:param name='genreid' value='${genre.id}' />
+							</c:url> <a href='${detailURL}'><c:out value='${genre.naam}' /></a></li>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+	</ul> <c:if test='${not empty films}'>
+			<c:forEach var='film' items='${films}'>
+				<c:url value='/detailFilm.htm' var='detailURL'>
+					<c:param name='id' value='${film.id}' />
+				</c:url>
+				<a href='${detailURL}'
+					<c:choose>
 					<c:when test='${film.voorraad>film.gereserveerd}'>
 						title="Reservatie mogelijk"
 					</c:when>
@@ -40,10 +38,10 @@
 						title="Reservatie niet mogelijk"
 					</c:otherwise>
 					</c:choose>>
-				<img src='<c:url value="/images/${film.id}.jpg"/>'
-				alt='${film.titel}'>
-			</a>
-		</c:forEach>
-	</c:if>
+					<img src='<c:url value="/images/${film.id}.jpg"/>'
+					alt='${film.titel}'>
+				</a>
+			</c:forEach>
+		</c:if></div>
 </body>
 </html>

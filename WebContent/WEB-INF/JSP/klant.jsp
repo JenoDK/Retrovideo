@@ -5,12 +5,12 @@
 <html lang='nl'>
 <head>
 <c:import url="/WEB-INF/JSP/head.jsp">
-	<c:param name='title' value='${film.titel}' />
+	<c:param name='title' value='Klant' />
 </c:import>
-<link rel='stylesheet' href='<c:url value="/css/reservaties.css"/>'>
 </head>
 <body>
 	<vdab:menu />
+	<div class='wrapper'>
 	<h1>Klant</h1>
 	<form method='get'>
 		<label> Familienaam bevat: <input name='familienaam'
@@ -38,5 +38,6 @@
 			</c:forEach>
 		</table>
 	</c:if>
+	</div>
 </body>
 </html>

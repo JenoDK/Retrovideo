@@ -1,15 +1,42 @@
-table, th, td {
-    border: 1px solid black;
+table {
+    width: 100%;
     border-collapse: collapse;
 }
-th, td {
-    padding: 5px;
+table td, table th {
+	 font-size: 1em;
+    border: 1px solid #000000;
+    padding: 3px 7px 2px 7px;
 }
 
+table th {
+	font-size: 1.1em;
+    text-align: left;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    background-color: #444;
+    color: #ffffff;
+}
+
+table tr.alt td {
+    color: #000000;
+    background-color: #EAF2D3;
+}
+
+
 body {
-	background-color: #FFFFDE;
-	color: #5A0000;
+	background-color: #bcbcbc;
+	color: #000000;
 	font-family: sans-serif;
+	width:100%;
+}
+
+.wrapper {
+	width:60%;
+	height:950px;
+	margin:0 auto;
+	padding:0 10px;
+	border-left:5px solid #444;
+	border-right:5px solid #444;
 }
 
 .fullwidth {
@@ -28,29 +55,6 @@ dd {
 	font-weight: bold;
 }
 
-label span, .fout {
-	background-color: red;
-	border-bottom-right-radius: 0.5em;
-	border-top-left-radius: 0.5em;
-	border-top-right-radius: 0.5em;
-	box-shadow: 5px 5px #777777;
-	margin-left: 0.5em;
-	padding: 0.5em;
-	color: white;
-}
-
-label span:empty, .fout:empty {
-	display: none;
-}
-
-label span {
-	margin-left: 0.5em;
-}
-
-label {
-	cursor: pointer;
-}
-
 input {
 	display: block;
 	margin-top: 0.2em;
@@ -60,10 +64,6 @@ input {
 
 input:focus, textarea:focus, select:focus {
 	background-color: #FFFFD6
-}
-
-.zonderbolletjes {
-	list-style: none;
 }
 
 input[type='checkbox'] {
@@ -96,27 +96,33 @@ input[type='checkbox'] {
 .nav a:hover {
   background-color: #005f5f;
 }
- 
-ul.zebra {
-	list-style: none;
+
+ul {
+	list-style-type: none;
+	margin: 0;
 	padding: 0;
 }
 
-ul.zebra li {
-	padding-left: 0.5em;
-	padding-bottom: 0.1em;
-	padding-top: 0.1em;
+li {
+	display: inline-block;
+	margin-left: 10px;
 }
 
-ul.zebra li:nth-child(odd) {
-	background-color: #F2F2E4;
+img {
+	margin-top: 20px;
 }
 
-ul.zebra li:nth-child(even) {
-	background-color: #E6E6C8;
+h1 {
+	margin-top:0;
+}
+ 
+#genre li{
+	margin-top:10px;
+	text-align:center;
 }
 
-ul.zebra li:nth-child(odd):hover, ul.zebra li:nth-child(even):hover {
-	background-color: #ccff00;
+.detail {
+	float:left;
+	margin:0 10px;
 }
 

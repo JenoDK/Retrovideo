@@ -5,12 +5,12 @@
 <html lang='nl'>
 <head>
 <c:import url="/WEB-INF/JSP/head.jsp">
-	<c:param name='title' value='rapport' />
+	<c:param name='title' value='Rapport' />
 </c:import>
-<link rel='stylesheet' href='<c:url value="/css/reservaties.css"/>'>
 </head>
 <body>
 <vdab:menu />
+<div class='wrapper'>
 	<h1>Rapport</h1>
 	<c:choose>
 	<c:when test='${empty foutefilms}'>
@@ -23,5 +23,6 @@
 		</c:forEach>
 	</c:otherwise>
 	</c:choose>
+	</div>
 </body>
 </html>

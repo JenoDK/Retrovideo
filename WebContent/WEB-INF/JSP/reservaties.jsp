@@ -7,10 +7,10 @@
 <c:import url="/WEB-INF/JSP/head.jsp">
 	<c:param name='title' value='Reservaties' />
 </c:import>
-<link rel='stylesheet' href='<c:url value="/css/reservaties.css"/>'>
 </head>
 <body>
 	<vdab:menu />
+	<div class='wrapper'>
 	<h1>Reservaties</h1>
 	<c:if test='${not empty reservaties }'>
 		<form name='form' action="<c:url value='/reservaties.htm'/>"
@@ -40,5 +40,6 @@
 	<c:if test='${not empty fout}'>
 		<h2>${fout}</h2>
 	</c:if>
+	</div>
 </body>
 </html>

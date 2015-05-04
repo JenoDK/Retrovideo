@@ -7,10 +7,10 @@
 <c:import url="/WEB-INF/JSP/head.jsp">
 	<c:param name='title' value='Bevestigen' />
 </c:import>
-<link rel='stylesheet' href='<c:url value="/css/reservaties.css"/>'>
 </head>
 <body>
 	<vdab:menu />
+	<div class='wrapper'>
 	<h1>Bevestigen</h1>
 
 	<c:forEach var='film' items='${filmsInMandje}'>
@@ -22,5 +22,6 @@
 	<form name='form' action="<c:url value='/bevestigen.htm'/>"
 	method='post' id='bevestigform'><input type="hidden" name='id' value="${klantid}" /><input type='submit'
 		value='Bevestigen' name='bevestigknop'></form>
+		</div>
 </body>
 </html>

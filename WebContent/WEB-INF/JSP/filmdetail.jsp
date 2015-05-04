@@ -7,37 +7,40 @@
 <c:import url="/WEB-INF/JSP/head.jsp">
 	<c:param name='title' value='${film.titel}' />
 </c:import>
-<link rel='stylesheet' href='<c:url value="/css/reservaties.css"/>'>
 </head>
 <body>
 	<vdab:menu />
-	<c:if test='${not empty film }'>
-		<h1>${film.titel}</h1>
-		<img src='<c:url value="/images/${film.id}.jpg"/>' alt='${film.titel}'>
-		<dl>
-			<dt>Prijs</dt>
-			<dd>€${film.prijs}</dd>
-			<dt>Voorraad</dt>
-			<dd>${film.voorraad}</dd>
-			<dt>Gereserveerd</dt>
-			<dd>${film.gereserveerd}</dd>
-			<dt>Beschikbaar</dt>
-			<dd>${film.voorraad - film.gereserveerd}</dd>
-		</dl>
-		<c:if test='${((film.voorraad - film.gereserveerd)>0) and empty fout}'>
-			<form name='form' action="<c:url value='/mandje.htm'/>" method='post'
-				id='toevoegform'><input type="hidden" name='id'
-				value="${film.id}" /> <input type='submit' name='toevoegknop'
-				value='Toevoegen aan mandje' /></form>
-		</c:if>
-		<c:if test='${not empty fout}'>
-			<h2>${fout}</h2>
-		</c:if>
-	</c:if>
-	<script>
-		document.getElementById('toevoegform').onsubmit = function() {
-			document.getElementById('toevoegknop').disabled = true;
-		};
-	</script>
+	<div class='wrapper'><c:if test='${not empty film }'>
+			<h1>${film.titel}</h1>
+			<img class='detail' src='<c:url value="/images/${film.id}.jpg"/>'
+				alt='${film.titel}'>
+			<dl>
+				<dt>Prijs</dt>
+				<dd>€${film.prijs}</dd>
+				<dt>Voorraad</dt>
+				<dd>${film.voorraad}</dd>
+				<dt>Gereserveerd</dt>
+				<dd>${film.gereserveerd}</dd>
+				<dt>Beschikbaar</dt>
+				<dd>${film.voorraad - film.gereserveerd}</dd>
+			</dl>
+			<a
+				href='http://www.imdb.com/find?ref_=nv_sr_fn&q=${film.titel}&s=all'><img
+				src='<c:url value="/images/imdb.png"/>' alt='imdb'></a>
+			<c:if
+				test='${((film.voorraad - film.gereserveerd)>0) and empty fout}'>
+				<form name='form' action="<c:url value='/mandje.htm'/>"
+					method='post' id='toevoegform'><input type="hidden"
+					name='id' value="${film.id}" /> <input type='submit'
+					name='toevoegknop' value='Toevoegen aan mandje' /></form>
+			</c:if>
+			<c:if test='${not empty fout}'>
+				<h2>${fout}</h2>
+			</c:if>
+		</c:if> <script>
+			document.getElementById('toevoegform').onsubmit = function() {
+				document.getElementById('toevoegknop').disabled = true;
+			};
+		</script></div>
 </body>
 </html>
