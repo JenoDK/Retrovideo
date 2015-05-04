@@ -37,10 +37,20 @@ public class ReservatiesServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		if (request.getParameter("verwijderknop") != null) {
-			long klantid = Long.parseLong(request.getParameter("klantid"));
-			long filmid = Long.parseLong(request.getParameter("filmid"));
-			reservatieDAO.delete(klantid, filmid);
-			filmDAO.changeGereserveerd("-1", filmid);
+			if (request.getParameterValues("id") != null) {
+				for (String ids : request.getParameterValues("id")){
+					String[] splited = ids.split("\\s+");
+					long filmid = Long.parseLong(splited[0]);
+					long klantid = Long.parseLong(splited[1]);
+					reservatieDAO.delete(klantid, filmid);
+					filmDAO.changeGereserveerd("-1", filmid);
+				}
+			}
+			
+//			long klantid = Long.parseLong(request.getParameter("klantid"));
+//			long filmid = Long.parseLong(request.getParameter("filmid"));
+//			reservatieDAO.delete(klantid, filmid);
+//			filmDAO.changeGereserveerd("-1", filmid);
 		}
 		response.sendRedirect(response.encodeRedirectURL(request
 				.getRequestURI()));

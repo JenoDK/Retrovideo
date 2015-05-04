@@ -19,8 +19,8 @@ public class ReservatieDAO extends AbstractDAO {
 	private static final String FIND_ALL_SQL = "SELECT klantid, filmid, klanten.familienaam, klanten.voornaam, "
 			+ "films.titel , reservatieDatum FROM retrovideo.reservaties "
 			+ "INNER JOIN klanten ON reservaties.klantid = klanten.id "
-			+ "INNER JOIN films ON reservaties.filmid = films.id;";
-	private static final String DELETE_SQL = "DELETE FROM retrovideo.reservaties WHERE klantid = ? AND filmid = ?";
+			+ "INNER JOIN films ON reservaties.filmid = films.id ORDER BY klantid;";
+	private static final String DELETE_SQL = "DELETE FROM retrovideo.reservaties WHERE klantid = ? AND filmid = ?;";
 
 	public void create(Reservatie reservatie) {
 		try (Connection connection = dataSource.getConnection();

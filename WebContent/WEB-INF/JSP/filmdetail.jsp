@@ -25,7 +25,7 @@
 				<dd>${film.voorraad - film.gereserveerd}</dd>
 			</dl>
 			<a
-				href='http://www.imdb.com/find?ref_=nv_sr_fn&q=${film.titel}&s=all'><img
+				href='http://www.imdb.com/find?ref_=nv_sr_fn&q=${film.titel}&s=all' target="_blank"><img
 				src='<c:url value="/images/imdb.png"/>' alt='imdb'></a>
 			<c:if
 				test='${((film.voorraad - film.gereserveerd)>0) and empty fout}'>

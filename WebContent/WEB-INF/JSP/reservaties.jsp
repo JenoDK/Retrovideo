@@ -20,17 +20,23 @@
 					<th>Klant</th>
 					<th>Film</th>
 					<th>Datum</th>
-					<th>Verwijderen</th>
+					<th><input type='submit' value='Verwijderen'
+						name='verwijderknop'></th>
 			</tr>
 				<c:forEach var='reservatie' items='${reservaties}'>
 					<tr>
-						<td>${reservatie.klantNaam}</td>
-						<td>${reservatie.filmNaam}</td>
+						<td>${reservatie.klantNaam} ${reservatie.klantid}</td>
+						<td>${reservatie.filmNaam} ${reservatie.filmid}</td>
 						<td>${reservatie.reservatieDatum }
-					<td> <input type="hidden" name='filmid'
-				value="${reservatie.filmid}" /><input type="hidden" name='klantid'
-				value="${reservatie.klantid}" /><input type='submit' value='Verwijderen'
-						name='verwijderknop'>
+					<td> <label><input type='checkbox' name='id'
+								value='${reservatie.filmid} ${reservatie.klantid}'></label>
+					
+<!-- 					<input type="hidden" name='filmid' -->
+<%-- 				value="${reservatie.filmid}" /><input type="hidden" name='klantid' --%>
+<%-- 				value="${reservatie.klantid}" /><input type='submit' value='Verwijderen' --%>
+<!-- 						name='verwijderknop'> -->
+						
+						
 						</td>
 					</tr>
 				</c:forEach>
