@@ -49,6 +49,67 @@ public class Reservatie implements Serializable{
 	public Date getReservatieDatum() {
 		return reservatieDatum;
 	}
+
+	@Override
+	public String toString() {
+		return "Reservatie [klantid=" + klantid + ", filmid=" + filmid
+				+ ", klantFamNaam=" + klantFamNaam + ", klantVoorNaam="
+				+ klantVoorNaam + ", filmNaam=" + filmNaam
+				+ ", reservatieDatum=" + reservatieDatum + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((filmNaam == null) ? 0 : filmNaam.hashCode());
+		result = prime * result + (int) (filmid ^ (filmid >>> 32));
+		result = prime * result
+				+ ((klantFamNaam == null) ? 0 : klantFamNaam.hashCode());
+		result = prime * result
+				+ ((klantVoorNaam == null) ? 0 : klantVoorNaam.hashCode());
+		result = prime * result + (int) (klantid ^ (klantid >>> 32));
+		result = prime * result
+				+ ((reservatieDatum == null) ? 0 : reservatieDatum.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Reservatie other = (Reservatie) obj;
+		if (filmNaam == null) {
+			if (other.filmNaam != null)
+				return false;
+		} else if (!filmNaam.equals(other.filmNaam))
+			return false;
+		if (filmid != other.filmid)
+			return false;
+		if (klantFamNaam == null) {
+			if (other.klantFamNaam != null)
+				return false;
+		} else if (!klantFamNaam.equals(other.klantFamNaam))
+			return false;
+		if (klantVoorNaam == null) {
+			if (other.klantVoorNaam != null)
+				return false;
+		} else if (!klantVoorNaam.equals(other.klantVoorNaam))
+			return false;
+		if (klantid != other.klantid)
+			return false;
+		if (reservatieDatum == null) {
+			if (other.reservatieDatum != null)
+				return false;
+		} else if (!reservatieDatum.equals(other.reservatieDatum))
+			return false;
+		return true;
+	}
 	
 	
 	
