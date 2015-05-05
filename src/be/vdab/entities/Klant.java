@@ -39,7 +39,7 @@ public class Klant implements Serializable{
 	}
 	
 	public String getNaam(){
-		return voornaam + " " + familienaam;
+		return familienaam+ " " + voornaam ;
 	}
 	
 	

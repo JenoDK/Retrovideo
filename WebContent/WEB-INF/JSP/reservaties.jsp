@@ -25,8 +25,8 @@
 			</tr>
 				<c:forEach var='reservatie' items='${reservaties}'>
 					<tr>
-						<td>${reservatie.klantNaam} ${reservatie.klantid}</td>
-						<td>${reservatie.filmNaam} ${reservatie.filmid}</td>
+						<td>${reservatie.klantNaam}</td>
+						<td>${reservatie.filmNaam}</td>
 						<td>${reservatie.reservatieDatum }
 					<td> <label><input type='checkbox' name='id'
 								value='${reservatie.filmid} ${reservatie.klantid}'></label>

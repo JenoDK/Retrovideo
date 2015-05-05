@@ -1,6 +1,7 @@
 package be.vdab.servlets;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -31,7 +32,7 @@ public class MandjeServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession();
 		if (request.getCookies() == null) {
 			request.setAttribute("fout", "Dit werkt enkel als cookies aanstaan");
 			request.getRequestDispatcher(VIEW).forward(request, response);
@@ -42,9 +43,13 @@ public class MandjeServlet extends HttpServlet {
 			Set<Long> mandje = (Set<Long>) session.getAttribute("mandje");
 			if (mandje != null) {
 				List<Film> filmsInMandje = new ArrayList<>();
+				BigDecimal totaal = new BigDecimal(0);
 				for (long id : mandje) {
-					filmsInMandje.add(filmDAO.read(id));
+					Film a = filmDAO.read(id);
+					totaal = totaal.add(a.getPrijs());
+					filmsInMandje.add(a);
 				}
+				request.setAttribute("mandjeTotaal", totaal);
 				request.setAttribute("filmsInMandje", filmsInMandje);
 			}
 		}

@@ -11,7 +11,8 @@
 <body>
 <vdab:menu />
 	<div class='wrapper'>
-		<ul id='genre'>
+	<div id='genre'>
+		<ul>
 			<c:forEach var='genre' items='${genres}'>
 				<c:choose>
 					<c:when test='${genre.id == activeGenre}'>
@@ -24,7 +25,7 @@
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
-	</ul> <c:if test='${not empty films}'>
+	</ul> </div><c:if test='${not empty films}'>
 			<c:forEach var='film' items='${films}'>
 				<c:url value='/detailFilm.htm' var='detailURL'>
 					<c:param name='id' value='${film.id}' />

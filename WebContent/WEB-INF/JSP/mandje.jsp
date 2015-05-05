@@ -31,6 +31,10 @@
 						</label></td>
 					</tr>
 				</c:forEach>
+					<tr>
+						<td>Totaal: </td>
+						<td>€${mandjeTotaal}</td>
+					</tr>
 		</table>
 		</form>
 	</c:if>

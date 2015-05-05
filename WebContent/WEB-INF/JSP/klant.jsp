@@ -13,7 +13,7 @@
 	<div class='wrapper'>
 	<h1>Klant</h1>
 	<form method='get'>
-		<label> Familienaam bevat: <input name='familienaam'
+		<label> Familienaam bevat: <span class='fout'>${fout}</span><input name='familienaam'
 			value='${param.familienaam}' type='text' min='1' autofocus>
 		</label> <input type='submit' value='Zoeken'>
 	</form>

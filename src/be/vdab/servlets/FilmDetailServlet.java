@@ -30,7 +30,7 @@ public class FilmDetailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			Film film = filmDAO.read(Long.parseLong(request.getParameter("id")));
-			HttpSession session = request.getSession(false);
+			HttpSession session = request.getSession();
 			@SuppressWarnings("unchecked")
 			Set<Long> filmIdsInMandje = (Set<Long>) session
 					.getAttribute("mandje");
